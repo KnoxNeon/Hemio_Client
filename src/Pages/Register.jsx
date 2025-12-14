@@ -5,9 +5,10 @@ import { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import { Bounce, toast } from 'react-toastify';
+import axios from 'axios';
 
 export default function Register() {
-    const { registerWithEmailPassword, setUser, handleGoogleSignin } = useContext(AuthContext);
+    const { registerWithEmailPassword, setUser } = useContext(AuthContext);
 
     
     const location = useLocation();
@@ -17,7 +18,8 @@ export default function Register() {
         e.preventDefault();
         const email = e.target.email.value.trim();
         const pass = e.target.password.value;
-        const photoUrl = e.target.photoUrl.value.trim();
+        const photoUrl = e.target.photoUrl;
+        const file = photoUrl.files[0]
         const name = e.target.name.value.trim();
 
         
@@ -64,6 +66,14 @@ export default function Register() {
             });
         }
 
+        const res = await axios.post(`https://api.imgbb.com/1/upload?key=c0c2a675182aff9fe924c451f808e65a`, {image:file},
+             {
+                headers:{
+                    'Content-Type' : 'multipart/form-data'
+                }
+            })
+        const mainPhotoUrl = res.data.data.display_url
+   
         try {
            
             const userCredential = await registerWithEmailPassword(email, pass);
@@ -71,7 +81,7 @@ export default function Register() {
 
             await updateProfile(user, {
                 displayName: name,
-                photoURL: photoUrl || null
+                photoURL: mainPhotoUrl || null
             });
 
             setUser(user);
@@ -137,7 +147,7 @@ export default function Register() {
                     PhotoURL
                   </label>
                   <input name='photoUrl'
-                    type="text"
+                    type="file"
                     placeholder="https://yourphoto/"
                     className="w-full px-4 py-4 bg-gray-700/50 border border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-sky-500 focus:ring-4 focus:ring-purple-500/20 transition-all"
                   />

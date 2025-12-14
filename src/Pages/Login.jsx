@@ -6,6 +6,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 import { Bounce, toast } from 'react-toastify';
+import auth from '../Firebase/firebase.config';
 
 export default function Login() {
     const { user, setUser, handleGoogleSignin} = useContext(AuthContext)
@@ -22,7 +23,7 @@ export default function Login() {
         .then((userCredential)=>{
             const user = userCredential.user;
             setUser(user)
-            navigate(location.state)
+            navigate(location.state? location.state : '/')
             toast.success("Signed In Successfully!", {
               position: "top-right",
               autoClose: 5000,
