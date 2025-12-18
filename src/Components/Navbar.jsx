@@ -129,6 +129,12 @@ const Navbar = () => {
         <div className="navbar-end ">
           {user && (
             <div className="flex gap-2">
+              <Link
+                to="/dashboard/main"
+                className="btn border-0 rounded-3xl shadow hover:scale-110 text-white bg-blue-600 hover:bg-blue-700"
+              >
+                Dashboard
+              </Link>
               <Link to="/profile">
                 <img
                   className="w-10 h-10 rounded-4xl border-2 border-sky-500 hover:scale-110"
@@ -148,6 +154,12 @@ const Navbar = () => {
 
           {!user && (
             <div className="space-x-2">
+              <Link
+                to="/dashboard/main"
+                className="btn border-0 rounded-3xl shadow hover:scale-110 text-white bg-blue-600 hover:bg-blue-700"
+              >
+                Dashboard
+              </Link>
               <Link
                 to="/login"
                 className="btn border-0 rounded-3xl shadow hover:scale-110 text-white bg-blue-600 hover:bg-blue-700"

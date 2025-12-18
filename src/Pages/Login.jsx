@@ -115,14 +115,7 @@ export default function Login() {
                   Login Now
                 </button>
 
-                <div className="relative my-8">
-                  <div className="relative flex justify-center text-sm">
-                    <span className="px-4 text-white">Or continue with</span>
-                  </div>
-                </div>
-                  <button onClick={googleSignin} className="py-3 px-6 mx-auto bg-sky-900 hover:scale-[1.02] border border-sky-600 rounded-xl text-white font-medium transition-all flex justify-center items-center gap-2">
-                    <FcGoogle />Google
-                  </button>
+               
               </form>
             </div>
           </div>
