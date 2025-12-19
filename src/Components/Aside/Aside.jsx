@@ -29,10 +29,10 @@ const Aside = () => {
 
 
           <li>
-            <NavLink to='/dashboard/add-request'
+            <NavLink to='/dashboard/main'
               className={({isActive}) =>
                 `flex items-center space-x-4 px-4 py-3 rounded-lg transition ${isActive? "bg-white text-red-500":"hover:bg-red-600"}  }`}>
-              <HiOutlineHeart size={24} /> <span className="text-lg">Add Request</span>
+              <HiOutlineHome size={24} /> <span className="text-lg">DashBoard</span>
             </NavLink>
           </li>
           <li>
@@ -43,10 +43,10 @@ const Aside = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to='/dashboard/add-request'
+            <NavLink to='/dashboard/all-users'
               className={({isActive}) =>
-                `flex items-center space-x-4 px-4 py-3 rounded-lg transition hover:bg-red-600 ${isActive? "bg-white text-red-500":""}  }`}>
-              <HiOutlineHeart size={24} /> <span className="text-lg">Add Request</span>
+                `flex items-center space-x-4 px-4 py-3 rounded-lg transition  ${isActive? "bg-white text-red-500":"hover:bg-red-600"}  }`}>
+              <HiOutlineUserGroup size={24} /> <span className="text-lg">All Users</span>
             </NavLink>
           </li>
 
