@@ -4,30 +4,30 @@ import { Navigate, useLocation } from 'react-router'
 import { signOut } from 'firebase/auth'
 import auth from '../Firebase/firebase.config'
 
-const PrivateRoute = ({children}) => {
-    const {user, loading, roleLoading, userStatus} = useContext(AuthContext)
-    const location  = useLocation()
+const PrivateRoute = ({ children }) => {
+  const { user, loading, roleLoading, userStatus } = useContext(AuthContext);
+  const location = useLocation();
 
-    useEffect(() => {
-    if (userStatus === 'blocked') {
-      alert("You're banned")
-      signOut(auth)
+  useEffect(() => {
+    if (userStatus === "blocked") {
+      alert("You're banned");
+      signOut(auth);
     }
-  }, [userStatus])
+  }, [userStatus]);
 
-    if(loading || roleLoading){
-        return <p>loadiinggggggggggggggg.............</p>
-    }
-
-    if(!user){
-        return <Navigate state={location.pathname} to="/login"></Navigate>
-    }
-
-    if (userStatus === 'blocked') {
-    return null
+  if (loading || roleLoading) {
+    return <p>loadiinggggggggggggggg.............</p>;
   }
-    
-    return children
-}
+
+  if (!user) {
+    return <Navigate state={location.pathname} to="/login"></Navigate>;
+  }
+
+  if (userStatus === "blocked") {
+    return null;
+  }
+
+  return children;
+};
 
 export default PrivateRoute

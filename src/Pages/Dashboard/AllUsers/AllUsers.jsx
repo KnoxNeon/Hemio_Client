@@ -6,16 +6,22 @@ const AllUsers = () => {
     const axiosSecure = useAxiosSecure()
     const [users, setUsers] = useState([])
     
-
-    useEffect(()=>{
-        
-        axiosSecure.get('/users')
+  const fetchUsers =() =>{
+    axiosSecure.get('/users')
         .then(res =>{
             setUsers(res.data)
         })
+
+  }
+    useEffect(()=>{
+        fetchUsers()
     },[axiosSecure])
 
-    console.log(users)
+    const handleStatus = (email, status) =>{
+        axiosSecure.patch(`/update/user/status?email=${email}&status=${status}`).then(res =>{
+          fetchUsers()
+        })
+    }
 
   return (
     <div className="overflow-x-auto">
@@ -30,6 +36,7 @@ const AllUsers = () => {
         <th>Blood Type</th>
         <th>Role</th>
         <th>Status</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -43,19 +50,16 @@ const AllUsers = () => {
         <td>{user?.blood}</td>
         <td>{user?.role}</td>
         <td>{user?.status}</td>
-        
         <td>
-            {
-               new Date(user?.date).toLocaleString('en-us', {
-                    year: 'numeric',
-                    month:'short',
-                    day:'numeric',
-                    hour:'numeric',
-                    minute:'numeric',
-                    hour12: true
-                
-                })}
+          {
+            user?.status == 'active'?(<button onClick={()=>handleStatus(user?.email, 'block')} className='btn bg-red-500 text-white'>Block</button>)
+            :
+            <button onClick={()=>handleStatus(user?.email, 'active')} className='btn bg-green-600 text-white'>Unblock</button>
+          }
+          
+          
         </td>
+        
       </tr>
 
         )
