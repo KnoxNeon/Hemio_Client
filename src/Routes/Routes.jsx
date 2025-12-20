@@ -11,6 +11,8 @@ import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import MyRequests from "../Pages/Dashboard/My Requests/MyRequests";
 import Donate from "../Pages/Donate";
 import PaymentSuccess from "../Pages/Payment/PaymentSuccess";
+import { Search } from "lucide-react";
+import SearchRequest from "../Pages/SearchRequest/SearchRequest";
 
 export const router = createBrowserRouter([
   {
@@ -31,11 +33,15 @@ export const router = createBrowserRouter([
         },
         {
            path: "/donate", 
-           element: <Donate/> 
+           element: <PrivateRoute><Donate/></PrivateRoute>
         },
         {
            path: "/payment-success", 
            element: <PaymentSuccess/> 
+        },
+        {
+           path: "/search", 
+           element: <SearchRequest/> 
         },
       
     ],
