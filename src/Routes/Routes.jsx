@@ -8,6 +8,7 @@ import DashboardLayout from "../DashboardLayout/DashboardLayout";
 import MainDashboard from "../Pages/Dashboard/MainDashboard/MainDashboard";
 import AddRequest from "../Pages/Dashboard/AddRequest/AddRequest";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import MyRequests from "../Pages/Dashboard/My Requests/MyRequests";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
         {
            path: "all-users", 
            element: <AllUsers/> 
+        },
+        {
+           path: "my-requests", 
+           element: <MyRequests/> 
         },
    ],
   }

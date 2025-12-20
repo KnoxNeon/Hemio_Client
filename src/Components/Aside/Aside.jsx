@@ -4,6 +4,7 @@ import {
   HiOutlineHome,
   HiOutlineUserGroup,
   HiOutlineHeart,
+  HiOutlineUserAdd,
   HiOutlineClipboardList,
   HiOutlineChartPie,
   HiOutlineInbox,
@@ -69,6 +70,14 @@ const Aside = () => {
           </li>
             )
           }
+
+          <li>
+            <NavLink to='/dashboard/my-requests'
+              className={({isActive}) =>
+                `flex items-center space-x-4 px-4 py-3 rounded-lg transition ${isActive? "bg-white text-red-500":"hover:bg-red-600"}  }`}>
+              <HiOutlineUserAdd size={24} /> <span className="text-lg">My Requests</span>
+            </NavLink>
+          </li>
 
 
 
