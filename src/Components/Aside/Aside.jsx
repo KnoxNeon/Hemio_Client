@@ -5,13 +5,10 @@ import {
   HiOutlineUserGroup,
   HiOutlineHeart,
   HiOutlineUserAdd,
-  HiOutlineClipboardList,
-  HiOutlineChartPie,
-  HiOutlineInbox,
-  HiOutlineCog,
   HiOutlineLogout,
   HiOutlineUser,
 } from 'react-icons/hi';
+import { BsFillDropletFill } from "react-icons/bs";
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../Provider/AuthProvider';
 import auth from '../../Firebase/firebase.config';
@@ -68,12 +65,23 @@ const Aside = () => {
           }
 
           {
-            role == 'Admin' && (
+            role == 'admin' && (
               <li>
             <NavLink to='/dashboard/all-users'
               className={({isActive}) =>
                 `flex items-center space-x-4 px-4 py-3 rounded-lg transition  ${isActive? "bg-white text-red-500":"hover:bg-red-600"}  }`}>
               <HiOutlineUserGroup size={24} /> <span className="text-lg">All Users</span>
+            </NavLink>
+          </li>
+            )
+          }
+          {
+            role == 'admin' && (
+              <li>
+            <NavLink to='/dashboard/all-requests'
+              className={({isActive}) =>
+                `flex items-center space-x-4 px-4 py-3 rounded-lg transition  ${isActive? "bg-white text-red-500":"hover:bg-red-600"}  }`}>
+              <BsFillDropletFill  size={24} /> <span className="text-lg">All Requests</span>
             </NavLink>
           </li>
             )

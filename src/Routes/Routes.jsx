@@ -14,6 +14,7 @@ import PaymentSuccess from "../Pages/Payment/PaymentSuccess";
 import { Search } from "lucide-react";
 import SearchRequest from "../Pages/SearchRequest/SearchRequest";
 import MyProfile from "../Pages/Dashboard/My Profile/MyProfile";
+import AllRequests from "../Pages/Dashboard/AllRequests/AllRequests";
 
 export const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
         {
            path: "my-profile", 
            element: <MyProfile/> 
+        },
+        {
+           path: "all-requests", 
+           element: <AllRequests/> 
         },
    ],
   }

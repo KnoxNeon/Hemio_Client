@@ -25,7 +25,7 @@ const AllUsers = () => {
 
   return (
     <div className="overflow-x-auto">
-      <title>My Orders</title>
+      <title>All Users</title>
   <table className="table table-xs">
     <thead>
       <tr>
