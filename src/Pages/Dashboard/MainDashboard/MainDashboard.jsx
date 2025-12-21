@@ -2,29 +2,40 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { Link } from 'react-router';
+import { Users, DollarSign, Droplet } from 'lucide-react';
 import Swal from 'sweetalert2';
 
 const MainDashboard = () => {
-  const { user: firebaseUser } = useContext(AuthContext);
+  const { user: firebaseUser, role, roleLoading } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
 
   const [recentRequests, setRecentRequests] = useState([]);
+  const [stats, setStats] = useState({ totalUsers: 0, totalFunding: 0, totalRequests: 0 });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (firebaseUser?.email) {
-      axiosSecure
-        .get('/my-recent-requests') // Uses the endpoint we added earlier (limit 3, newest first)
-        .then((res) => {
+    if (role === 'admin') {
+      axiosSecure.get('/admin-stats')
+        .then(res => {
+          setStats(res.data);
+          setLoading(false);
+        })
+        .catch(err => {
+          console.error(err);
+          setLoading(false);
+        });
+    } else {
+      axiosSecure.get('/my-recent-requests')
+        .then(res => {
           setRecentRequests(res.data);
           setLoading(false);
         })
-        .catch((err) => {
+        .catch(err => {
           console.error(err);
           setLoading(false);
         });
     }
-  }, [firebaseUser, axiosSecure]);
+  }, [firebaseUser, role, roleLoading, axiosSecure]);
 
   const handleStatusChange = (id, newStatus) => {
     Swal.fire({
@@ -78,6 +89,43 @@ const MainDashboard = () => {
       <h2 className="text-4xl font-bold  text-center mb-12">
         Welcome back, <span className='text-red-700'>{firebaseUser?.displayName || 'Donor'}!</span>
       </h2>
+
+      {role === 'admin' && (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Total Donors */}
+          <div className="bg-linear-to-br from-blue-500 to-blue-600 text-white rounded-2xl shadow-xl p-8 flex items-center space-x-6 transform hover:scale-105 transition">
+            <div className="p-4 bg-white bg-opacity-20 rounded-full">
+              <Users className='text-black fill-zinc-200-300' size={48} />
+            </div>
+            <div>
+              <h3 className="text-4xl font-bold">{stats.totalUsers}</h3>
+              <p className="text-lg mt-2 opacity-90">Total Donors</p>
+            </div>
+          </div>
+
+          {/* Total Funding */}
+          <div className="bg-linear-to-br from-green-500 to-green-600 text-white rounded-2xl shadow-xl p-8 flex items-center space-x-6 transform hover:scale-105 transition">
+            <div className="p-4 bg-white bg-opacity-20 rounded-full">
+              <DollarSign className='text-black fill-amber-300' size={48} />
+            </div>
+            <div>
+              <h3 className="text-4xl font-bold">${stats.totalFunding.toFixed(2)}</h3>
+              <p className="text-lg mt-2 opacity-90">Total Funding</p>
+            </div>
+          </div>
+
+          {/* Total Requests */}
+          <div className="bg-linear-to-br from-yellow-500 to-yellow-600 text-white rounded-2xl shadow-xl p-8 flex items-center space-x-6 transform hover:scale-105 transition">
+            <div className="p-4 bg-white bg-opacity-20 rounded-full">
+              <Droplet className='text-black fill-red-600' size={48} />
+            </div>
+            <div>
+              <h3 className="text-4xl font-bold">{stats.totalRequests}</h3>
+              <p className="text-lg mt-2 opacity-90">Total Requests</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {recentRequests.length > 0 && (
         <div className="mb-12">
