@@ -9,7 +9,7 @@ Live URL: https://pawmart-knox.surge.sh
 
 - Browse Requests: Users Can browse blood donation requests according to blood types, district and upazila 
 - Fully responsive design – looks perfect on mobile, tablet, and desktop  
-- Secure Sign In and Registration authentication (powered by Firebase)   
+- Secure Sign In and Registration authentication (powered by Firebase, JWT)   
 - Management: Role based management system to prevent any inconvinience. 
 - Protected Routes: Smooth page load and secure access for logged-in users.    
 - Beautiful UI with better UX 
@@ -21,6 +21,6 @@ Live URL: https://pawmart-knox.surge.sh
  3. `tailwindcss` + `daisyui` + `react-toastify` + `motion` + `swiper` Design and styling                     
  4. `lucide-react` + `react-icons` Beautiful icons  
  5. `firebase` Google authentication & Firestore         
- 6. `` deployment  
+ 6. `surge` + `vercel` deployment  
  7. `express` custom apis
  8. `mongodb` data management
