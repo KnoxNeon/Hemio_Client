@@ -32,6 +32,7 @@ const MyRequests = () => {
     }
   return (
     <div>
+      <title>My Requests</title>
       <h2 className="text-4xl font-bold text-red-700  text-center mb-12">
        My Requests
       </h2>

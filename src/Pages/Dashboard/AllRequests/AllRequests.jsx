@@ -34,6 +34,7 @@ const AllRequests = () => {
         }
   return (
     <div>
+      <title>All Requests</title>
       <h2 className="text-4xl font-bold text-red-700  text-center mb-12">
        All Requests
       </h2>

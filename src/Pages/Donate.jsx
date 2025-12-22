@@ -29,6 +29,7 @@ const Donate = () => {
     }
   return (
     <div>
+      <title>Add Donation</title>
       <form onSubmit={handleCheckOut} action="" className='flex justify-center items-center min-h-screen gap-4'>
         <input name='donateAmount' type="text" placeholder='type here' className='input' />
         <button className='btn btn-primary' type='submit'>Donate</button>

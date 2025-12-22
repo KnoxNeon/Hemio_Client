@@ -53,6 +53,7 @@ const SearchRequest = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-6">
+      <title>Search Requests</title>
       <div className="max-w-7xl mx-auto">
         
         <div className="bg-white rounded-3xl shadow-2xl p-10 mb-16">
