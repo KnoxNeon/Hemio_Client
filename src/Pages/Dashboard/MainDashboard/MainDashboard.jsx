@@ -95,7 +95,7 @@ const MainDashboard = () => {
           {/* Total Donors */}
           <div className="bg-linear-to-br from-blue-500 to-blue-600 text-white rounded-2xl shadow-xl p-8 flex items-center space-x-6 transform hover:scale-105 transition">
             <div className="p-4 bg-white bg-opacity-20 rounded-full">
-              <Users className='text-black fill-zinc-200-300' size={48} />
+              <Users className='text-black fill-zinc-400' size={48} />
             </div>
             <div>
               <h3 className="text-4xl font-bold">{stats.totalUsers}</h3>

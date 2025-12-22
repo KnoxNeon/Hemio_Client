@@ -23,51 +23,70 @@ const AllUsers = () => {
         })
     }
 
+    const handleRole = (email, newRole) =>{
+      axiosSecure.patch(`/update/user/status?email=${email}&role=${newRole}`).then(res=>{
+        fetchUsers()
+      }) 
+    }
+
   return (
     <div className="overflow-x-auto">
       <title>All Users</title>
-  <table className="table table-xs">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Avatar</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Blood Type</th>
-        <th>Role</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {
-        users.map(user=>
-        <tr>
-        <td></td>
-        <td><img src={user?.mainPhotoUrl} className='w-10 h-10' alt="" /></td>
-        <td>{user?.name}</td>
-        <td>{user?.email}</td>
-        <td>{user?.blood}</td>
-        <td>{user?.role}</td>
-        <td>{user?.status}</td>
-        <td>
-          {
-            user?.status == 'active'?(<button onClick={()=>handleStatus(user?.email, 'block')} className='btn bg-red-500 text-white'>Block</button>)
-            :
-            <button onClick={()=>handleStatus(user?.email, 'active')} className='btn bg-green-600 text-white'>Unblock</button>
-          }
-          
-          
-        </td>
-        
-      </tr>
-
-        )
-      }
-      </tbody> 
-  </table>
-</div>
-  )
+      <table className="table table-xs">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Avatar</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Blood Type</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr>
+              <td></td>
+              <td>
+                <img src={user?.mainPhotoUrl} className="w-10 h-10" alt="" />
+              </td>
+              <td>{user?.name}</td>
+              <td>{user?.email}</td>
+              <td>{user?.blood}</td>
+              <td>{user?.role}</td>
+              <td>{user?.status}</td>
+              <td>
+                {user?.status == "active" ? (
+                  <button
+                    onClick={() => handleStatus(user?.email, "block")}
+                    className="btn bg-red-500 text-white"
+                  >
+                    Block
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => handleStatus(user?.email, "active")}
+                    className="btn bg-green-600 text-white"
+                  >
+                    Unblock
+                  </button>
+                )}
+              
+                <select defaultValue={user?.role} className="select w-20">
+                  <option disabled={true}>Select Role</option>
+                  <option onClick={() => handleRole(user?.email, 'admin')}>admin</option>
+                  <option onClick={() => handleRole(user?.email, 'volunteer')}>volunteer</option>
+                  <option onClick={() => handleRole(user?.email, 'donor')}>donor</option>
+                </select>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
 export default AllUsers
