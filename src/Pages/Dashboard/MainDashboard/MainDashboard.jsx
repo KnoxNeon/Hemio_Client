@@ -14,7 +14,7 @@ const MainDashboard = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (role === 'admin') {
+    if (role === 'admin' || role === 'volunteer') {
       axiosSecure.get('/admin-stats')
         .then(res => {
           setStats(res.data);
@@ -90,7 +90,7 @@ const MainDashboard = () => {
         Welcome back, <span className='text-red-700'>{firebaseUser?.displayName || 'Donor'}!</span>
       </h2>
 
-      {role === 'admin' && (
+      {(role == 'admin' || role == 'volunteer')  && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Total Donors */}
           <div className="bg-linear-to-br from-blue-500 to-blue-600 text-white rounded-2xl shadow-xl p-8 flex items-center space-x-6 transform hover:scale-105 transition">

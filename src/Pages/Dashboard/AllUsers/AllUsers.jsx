@@ -31,8 +31,11 @@ const AllUsers = () => {
 
   return (
     <div className="overflow-x-auto">
+      <h2 className="text-4xl font-bold text-red-700  text-center mb-12">
+       All Users
+      </h2>
       <title>All Users</title>
-      <table className="table table-xs">
+      <table className="table table-xs text-center">
         <thead>
           <tr>
             <th></th>
@@ -57,7 +60,7 @@ const AllUsers = () => {
               <td>{user?.blood}</td>
               <td>{user?.role}</td>
               <td>{user?.status}</td>
-              <td>
+              <td className='space-x-2'>
                 {user?.status == "active" ? (
                   <button
                     onClick={() => handleStatus(user?.email, "block")}
