@@ -9,6 +9,7 @@ import MainDashboard from "../Pages/Dashboard/MainDashboard/MainDashboard";
 import AddRequest from "../Pages/Dashboard/AddRequest/AddRequest";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import MyRequests from "../Pages/Dashboard/My Requests/MyRequests";
+import AvailableRequests from "../Pages/Dashboard/AvailableRequests/AvailableRequests";
 import Donate from "../Pages/Donate";
 import PaymentSuccess from "../Pages/Payment/PaymentSuccess";
 import { Search } from "lucide-react";
@@ -66,12 +67,16 @@ export const router = createBrowserRouter([
            element: <AddRequest/> 
         },
         {
-           path: "all-users", 
-           element: <AllUsers/> 
+           path: "available-requests", 
+           element: <AvailableRequests/> 
         },
         {
            path: "my-requests", 
            element: <MyRequests/> 
+        },
+        {
+           path: "all-users", 
+           element: <AllUsers/> 
         },
         {
            path: "my-profile", 

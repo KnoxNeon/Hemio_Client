@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth"
+import { createUserWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 import { createContext, useEffect, useState } from "react"
 import auth from "../Firebase/firebase.config"
 import axios from "axios"
@@ -15,6 +15,21 @@ const AuthProvider = ({children}) => {
 
     const registerWithEmailPassword = (email, pass) =>{
         return createUserWithEmailAndPassword(auth, email, pass)
+    }
+
+    const handleGoogleSignin = async () => {
+        try {
+            const provider = new GoogleAuthProvider()
+            // Add additional scopes if needed
+            provider.addScope('email')
+            provider.addScope('profile')
+            
+            const result = await signInWithPopup(auth, provider)
+            return result
+        } catch (error) {
+            console.error('Google sign-in error:', error)
+            throw error
+        }
     }
    
     useEffect(() => {
@@ -35,10 +50,15 @@ const AuthProvider = ({children}) => {
                 setUserStatus(res.data.status)
                 setRoleLoading(false)
             })
+            .catch(err => {
+                console.error('Error fetching role:', err)
+                setRoleLoading(false)
+            })
       },[user])
 
   const authData = { 
     registerWithEmailPassword,
+    handleGoogleSignin,
     user,
     setUser,
     loading,

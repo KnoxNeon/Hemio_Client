@@ -49,6 +49,7 @@ const MainDashboard = () => {
       cancelButtonText: 'No',
     }).then((result) => {
       if (result.isConfirmed) {
+        // Use the regular endpoint for donors updating their own requests
         axiosSecure
           .patch(`/requests/${id}/status`, { status: newStatus })
           .then(() => {
@@ -86,83 +87,143 @@ const MainDashboard = () => {
   };
 
   return (
-    <div className="md:p-6 max-w-6xl mx-auto">
-      <title>DashBoard Home</title>
-      <h2 className="text-xl md:text-4xl font-bold  text-center md:mb-12">
-        Welcome back, <span className='text-red-700'>{firebaseUser?.displayName || 'Donor'}!</span>
-      </h2>
+    <div className="space-y-8">
+      <title>Dashboard Home</title>
+      
+      {/* Welcome Header */}
+      <div className="card-elevated p-8 text-center bg-gradient-to-r from-red-50 to-sky-50">
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+          Welcome back, <span className='text-red-600'>{firebaseUser?.displayName || 'Hero'}!</span>
+        </h1>
+        <p className="text-gray-600 text-lg">
+          {role === 'admin' ? 'Manage the blood donation system' : 
+           role === 'volunteer' ? 'Help coordinate blood donations' : 
+           'Your donations save lives every day'}
+        </p>
+      </div>
 
-      {(role == 'admin' || role == 'volunteer')  && (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Total Donors */}
-          <div className="bg-linear-to-br from-blue-500 to-blue-600 text-white rounded-2xl shadow-xl p-8 flex flex-col md:flex-row items-center space-x-6 transform hover:scale-105 transition">
-            <div className="p-4 bg-white bg-opacity-20 rounded-full">
-              <Users className='text-black fill-zinc-400' size={48} />
+      {/* Admin/Volunteer Stats Dashboard */}
+      {(role === 'admin' || role === 'volunteer') && (
+        <div className="space-y-6">
+          <h2 className="text-2xl font-bold text-gray-800">System Overview</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Total Users */}
+            <div className="card-elevated p-6 bg-gradient-to-br from-blue-500 to-blue-600 text-white hover:scale-105 transition-transform">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-3xl font-bold">{stats.totalUsers || 0}</h3>
+                  <p className="text-blue-100 font-medium">Total Users</p>
+                </div>
+                <div className="p-3 bg-white/20 rounded-full">
+                  <Users size={32} />
+                </div>
+              </div>
             </div>
-            <div>
-              <h3 className="text-4xl font-bold">{stats.totalUsers}</h3>
-              <p className="text-lg md:mt-2 opacity-90">Total Donors</p>
-            </div>
-          </div>
 
-          {/* Total Funding */}
-          <div className="bg-linear-to-br from-green-500 to-green-600 text-white rounded-2xl shadow-xl p-8 flex flex-col md:flex-row items-center space-x-6 transform hover:scale-105 transition">
-            <div className="p-1 md:p-4 bg-white bg-opacity-20 rounded-full">
-              <DollarSign className='text-black fill-amber-300' size={48} />
+            {/* Total Funding */}
+            <div className="card-elevated p-6 bg-gradient-to-br from-green-500 to-green-600 text-white hover:scale-105 transition-transform">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-3xl font-bold">${(stats.totalFunding || 0).toFixed(2)}</h3>
+                  <p className="text-green-100 font-medium">Total Funding</p>
+                </div>
+                <div className="p-3 bg-white/20 rounded-full">
+                  <DollarSign size={32} />
+                </div>
+              </div>
             </div>
-            <div>
-              <h3 className="text-4xl font-bold">${stats.totalFunding.toFixed(2)}</h3>
-              <p className="text-lg md:mt-2 opacity-90">Total Funding</p>
-            </div>
-          </div>
 
-          {/* Total Requests */}
-          <div className="bg-linear-to-br from-yellow-500 to-yellow-600 text-white rounded-2xl shadow-xl p-8 flex flex-col md:flex-row items-center space-x-6 transform hover:scale-105 transition">
-            <div className="p-1 md:p-4 bg-white bg-opacity-20 rounded-full">
-              <Droplet className='text-black fill-red-600' size={48} />
-            </div>
-            <div>
-              <h3 className="text-4xl font-bold">{stats.totalRequests}</h3>
-              <p className="text-lg md:mt-2 opacity-90">Total Requests</p>
+            {/* Total Requests */}
+            <div className="card-elevated p-6 bg-gradient-to-br from-red-500 to-red-600 text-white hover:scale-105 transition-transform">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-3xl font-bold">{stats.totalRequests || 0}</h3>
+                  <p className="text-red-100 font-medium">Blood Requests</p>
+                </div>
+                <div className="p-3 bg-white/20 rounded-full">
+                  <Droplet size={32} />
+                </div>
+              </div>
             </div>
           </div>
         </div>
       )}
 
+      {/* Quick Actions */}
+      <div className="card-elevated p-6">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Quick Actions</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {role === 'donor' && (
+            <>
+              <Link to="/dashboard/add-request" className="btn-primary text-center py-4 rounded-xl">
+                🩸 Create Request
+              </Link>
+              <Link to="/dashboard/available-requests" className="btn-secondary text-center py-4 rounded-xl">
+                ❤️ Available Requests
+              </Link>
+              <Link to="/dashboard/my-requests" className="btn-outline text-center py-4 rounded-xl">
+                📋 My Requests
+              </Link>
+            </>
+          )}
+          {(role === 'admin' || role === 'volunteer') && (
+            <>
+              <Link to="/dashboard/all-requests" className="btn-primary text-center py-4 rounded-xl">
+                📋 All Requests
+              </Link>
+              <Link to="/dashboard/all-requests?filter=pending" className="bg-yellow-600 text-white text-center py-4 rounded-xl hover:bg-yellow-700 transition-colors">
+                ⚡ Pending Approvals
+              </Link>
+              {role === 'admin' && (
+                <Link to="/dashboard/all-users" className="btn-secondary text-center py-4 rounded-xl">
+                  👥 Manage Users
+                </Link>
+              )}
+            </>
+          )}
+          <Link to="/dashboard/my-profile" className="btn-outline text-center py-4 rounded-xl">
+            👤 My Profile
+          </Link>
+          <Link to="/search-requests" className="bg-gray-600 text-white text-center py-4 rounded-xl hover:bg-gray-700 transition-colors">
+            🔍 Find Requests
+          </Link>
+        </div>
+      </div>
+
+      {/* Recent Requests Section */}
       {recentRequests.length > 0 && (
-        <div className="mb-12">
-          <div className="flex justify-between items-center mb-8">
-            <h3 className="text-2xl font-semibold text-gray-800">
-              Your Recent Donation Requests
-            </h3>
+        <div className="space-y-6">
+          <div className="flex justify-between items-center">
+            <h2 className="text-2xl font-bold text-gray-800">
+              Your Recent Blood Requests
+            </h2>
             <Link
               to="/dashboard/my-requests"
-              className="text-blue-600 hover:underline font-medium"
+              className="text-red-600 hover:text-red-700 font-medium flex items-center gap-2"
             >
               View All →
             </Link>
           </div>
 
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {recentRequests.map((req) => (
+            {recentRequests.slice(0, 6).map((req) => (
               <div
                 key={req._id}
-                className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow"
+                className="card-elevated p-6 hover:shadow-xl transition-all duration-300"
               >
-                
+                {/* Header */}
                 <div className="flex justify-between items-start mb-4">
-                  <span className="text-3xl font-bold text-red-600">
+                  <div className="blood-group-display w-16 h-16 text-2xl">
                     {req.blood_group}
-                  </span>
+                  </div>
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
                       req.status === 'pending'
-                        ? 'bg-yellow-100 text-yellow-800'
+                        ? 'badge-pending'
                         : req.status === 'inprogress'
                         ? 'bg-blue-100 text-blue-800'
                         : req.status === 'done'
-                        ? 'bg-green-100 text-green-800'
+                        ? 'badge-active'
                         : req.status === 'canceled'
                         ? 'bg-red-100 text-red-800'
                         : 'bg-gray-100 text-gray-800'
@@ -172,71 +233,72 @@ const MainDashboard = () => {
                   </span>
                 </div>
 
-                
-                <h4 className="text-lg font-semibold text-gray-800">
-                  {req.recipient_name}
-                </h4>
-                <p className="text-sm text-gray-600 mt-1">
-                  {req.recipient_district}, {req.recipient_upazila}
-                </p>
+                {/* Patient Info */}
+                <div className="space-y-2 mb-4">
+                  <h4 className="text-lg font-semibold text-gray-800">
+                    {req.recipient_name}
+                  </h4>
+                  <p className="text-sm text-gray-600">
+                    📍 {req.recipient_district}, {req.recipient_upazila}
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    🏥 {req.hospital_name}
+                  </p>
+                  <p className="text-sm text-gray-700">
+                    📅 {req.request_date ? new Date(req.request_date).toLocaleDateString() : 
+                         req.createdAt ? new Date(req.createdAt).toLocaleDateString() : 
+                         'Date not available'} at {req.request_time || 'Time not available'}
+                  </p>
+                </div>
 
-                
-                <p className="text-sm text-gray-700 mt-3">
-                  <strong>Date:</strong>{' '}
-                  {new Date(req.request_date).toLocaleDateString()}
-                </p>
-                <p className="text-sm text-gray-700">
-                  <strong>Time:</strong> {req.request_time}
-                </p>
-
-                
+                {/* Donor Info */}
                 {req.status === 'inprogress' && req.donor_name && (
-                  <div className="mt-4 pt-4 border-t">
-                    <p className="text-sm font-medium text-gray-800">
-                      Donor Assigned:
+                  <div className="bg-green-50 p-3 rounded-lg mb-4">
+                    <p className="text-sm font-medium text-green-800">
+                      ✅ Donor Assigned:
                     </p>
-                    <p className="text-sm text-gray-600">{req.donor_name}</p>
-                    <p className="text-sm text-gray-500">{req.donor_email}</p>
+                    <p className="text-sm text-green-700">{req.donor_name}</p>
+                    <p className="text-xs text-green-600">{req.donor_email}</p>
                   </div>
                 )}
 
-                
-                <div className="mt-6 flex flex-wrap gap-2">
+                {/* Action Buttons */}
+                <div className="flex flex-wrap gap-2">
                   <Link
                     to={`/dashboard/edit-request/${req._id}`}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm font-medium"
+                    className="px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm font-medium transition-colors"
                   >
                     Edit
                   </Link>
 
                   <button
                     onClick={() => handleDelete(req._id)}
-                    className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 text-sm font-medium"
+                    className="px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 text-sm font-medium transition-colors"
                   >
                     Delete
                   </button>
 
                   <Link
                     to={`/request-details/${req._id}`}
-                    className="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-800 text-sm font-medium"
+                    className="px-3 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-800 text-sm font-medium transition-colors"
                   >
-                    View Details
+                    Details
                   </Link>
 
-                  
+                  {/* Status Change Buttons */}
                   {req.status === 'inprogress' && (
                     <>
                       <button
                         onClick={() => handleStatusChange(req._id, 'done')}
-                        className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm font-medium"
+                        className="px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm font-medium transition-colors"
                       >
-                        Done
+                        ✅ Complete
                       </button>
                       <button
                         onClick={() => handleStatusChange(req._id, 'canceled')}
-                        className="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 text-sm font-medium"
+                        className="px-3 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 text-sm font-medium transition-colors"
                       >
-                        Cancel
+                        ❌ Cancel
                       </button>
                     </>
                   )}
@@ -244,6 +306,23 @@ const MainDashboard = () => {
               </div>
             ))}
           </div>
+        </div>
+      )}
+
+      {/* Empty State for Donors */}
+      {role === 'donor' && recentRequests.length === 0 && (
+        <div className="card-elevated p-12 text-center">
+          <div className="text-6xl mb-4">🩸</div>
+          <h3 className="text-2xl font-bold text-gray-800 mb-2">No Blood Requests Yet</h3>
+          <p className="text-gray-600 mb-6">
+            Create your first blood donation request to help save lives in your community.
+          </p>
+          <Link
+            to="/dashboard/add-request"
+            className="btn-primary px-8 py-3 text-lg"
+          >
+            Create Your First Request
+          </Link>
         </div>
       )}
       

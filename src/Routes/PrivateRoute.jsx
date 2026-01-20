@@ -1,8 +1,9 @@
-import React, { useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { AuthContext } from '../Provider/AuthProvider'
 import { Navigate, useLocation } from 'react-router'
 import { signOut } from 'firebase/auth'
 import auth from '../Firebase/firebase.config'
+import LoadingSpinner from '../Components/LoadingSpinner'
 
 const PrivateRoute = ({ children }) => {
   const { user, loading, roleLoading, userStatus } = useContext(AuthContext);
@@ -16,7 +17,12 @@ const PrivateRoute = ({ children }) => {
   }, [userStatus]);
 
   if (loading || roleLoading) {
-    return <p>loadiinggggggggggggggg.............</p>;
+    return (
+      <LoadingSpinner 
+        message="Authenticating..."
+        subMessage="Please wait while we verify your access."
+      />
+    );
   }
 
   if (!user) {

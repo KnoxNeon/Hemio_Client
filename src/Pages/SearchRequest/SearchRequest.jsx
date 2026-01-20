@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import useAxios from '../../Hooks/useAxios';
 import { Link } from 'react-router';
 import { Search } from 'lucide-react';
+import LoadingSpinner from '../../Components/LoadingSpinner';
 
 const SearchRequest = () => {
   const [upazilas, setUpazilas] = useState([]);
@@ -137,9 +138,11 @@ const SearchRequest = () => {
 
         <div>
           {loading ? (
-            <div className="text-center py-20">
-              <p className="text-2xl text-gray-600">Searching for matching requests...</p>
-            </div>
+            <LoadingSpinner 
+              message="Searching for matching requests..."
+              subMessage="Please wait while we find blood requests in your area."
+              fullScreen={false}
+            />
           ) : hasSearched && searchResults.length === 0 ? (
             <div className="text-center py-20">
               <p className="text-3xl text-gray-700 mb-4">No matching requests found</p>
@@ -179,7 +182,9 @@ const SearchRequest = () => {
                           <strong>Location:</strong> {req.recipient_district}, {req.recipient_upazila}
                         </p>
                         <p>
-                          <strong>Date:</strong> {new Date(req.request_date).toLocaleDateString()}
+                          <strong>Date:</strong> {req.request_date ? new Date(req.request_date).toLocaleDateString() : 
+                                                           req.createdAt ? new Date(req.createdAt).toLocaleDateString() : 
+                                                           'Date not available'}
                         </p>
                         <p>
                           <strong>Time:</strong> {req.request_time}

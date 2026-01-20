@@ -1,136 +1,160 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin, Heart } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-linear-to-b from-sky-900 to-black text-white">
-     
-
-      <div className="relative max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer className="gradient-secondary text-white">
+      {/* Main Footer Content */}
+      <div className="container-base section-padding">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           
+          {/* Brand Section */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
-              <img src='../logo.png'className='h-16 w-16' alt="" />
-              <h3 className="text-3xl font-bold">Hemio</h3>
+              <img src='../logo.png' className='h-12 w-12' alt="Hemio Logo" />
+              <h3 className="text-2xl font-bold">Hemio</h3>
             </div>
-            <p className="text-gray-300 leading-relaxed max-w-xs">
+            <p className="text-gray-300 leading-relaxed">
               Connecting donors with those in need. Together, we save lives — one drop at a time.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="p-3 bg-red-700 rounded-full hover:bg-red-600 transition">
-                <Facebook size={20} />
+            <div className="flex space-x-3">
+              <a href="#" className="p-3 bg-red-600 rounded-full hover:bg-red-500 transition-colors group">
+                <Facebook size={18} className="group-hover:scale-110 transition-transform" />
               </a>
-              <a href="#" className="p-3 bg-red-700 rounded-full hover:bg-red-600 transition">
-                <Twitter size={20} />
+              <a href="#" className="p-3 bg-red-600 rounded-full hover:bg-red-500 transition-colors group">
+                <Twitter size={18} className="group-hover:scale-110 transition-transform" />
               </a>
-              <a href="#" className="p-3 bg-red-700 rounded-full hover:bg-red-600 transition">
-                <Instagram size={20} />
+              <a href="#" className="p-3 bg-red-600 rounded-full hover:bg-red-500 transition-colors group">
+                <Instagram size={18} className="group-hover:scale-110 transition-transform" />
               </a>
-              <a href="#" className="p-3 bg-red-700 rounded-full hover:bg-red-600 transition">
-                <Youtube size={20} />
+              <a href="#" className="p-3 bg-red-600 rounded-full hover:bg-red-500 transition-colors group">
+                <Youtube size={18} className="group-hover:scale-110 transition-transform" />
               </a>
             </div>
           </div>
 
+          {/* Quick Links */}
           <div>
-            <h4 className="text-xl font-semibold mb-6 text-red-300">Quick Links</h4>
-            <ul className="space-y-4">
+            <h4 className="text-lg font-semibold mb-6 text-red-300">Quick Links</h4>
+            <ul className="space-y-3">
               <li>
-                <Link to="/" className="hover:text-red-300 transition">
-                  Home
+                <Link to="/" className="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
+                  <span>Home</span>
                 </Link>
               </li>
               <li>
-                <Link to="/search" className="hover:text-red-300 transition">
-                  Search Donors
+                <Link to="/public-requests" className="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
+                  <span>Blood Requests</span>
                 </Link>
               </li>
               <li>
-                <Link to="/register" className="hover:text-red-300 transition">
-                  Become a Donor
+                <Link to="/search-requests" className="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
+                  <span>Search Donors</span>
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="hover:text-red-300 transition">
-                  About Us
+                <Link to="/register" className="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
+                  <span>Become a Donor</span>
                 </Link>
               </li>
               <li>
-                <Link to="/faq" className="hover:text-red-300 transition">
+                <Link to="/dashboard/main" className="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
+                  <span>Dashboard</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div>
+            <h4 className="text-lg font-semibold mb-6 text-red-300">Support</h4>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/help" className="text-gray-300 hover:text-white transition-colors">
+                  Help Center
+                </Link>
+              </li>
+              <li>
+                <Link to="/faq" className="text-gray-300 hover:text-white transition-colors">
                   FAQ
                 </Link>
               </li>
-            </ul>
-          </div>
-
-          
-          <div>
-            <h4 className="text-xl font-semibold mb-6 text-red-300">Resources</h4>
-            <ul className="space-y-4">
               <li>
-                <Link to="https://www.redcrossblood.org/donate-blood/blood-types.html" className="hover:text-red-300 transition">
-                  Blood Types Guide
+                <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">
+                  Contact Us
                 </Link>
               </li>
               <li>
-                <Link to="https://www.redcrossblood.org/donate-blood/blood-donation-process/donation-process-overview.html" className="hover:text-red-300 transition">
-                  Donation Process
+                <Link to="/privacy" className="text-gray-300 hover:text-white transition-colors">
+                  Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="https://www.healthline.com/health/benefits-of-donating-blood" className="hover:text-red-300 transition">
-                  Health Benefits
+                <Link to="/terms" className="text-gray-300 hover:text-white transition-colors">
+                  Terms of Service
                 </Link>
               </li>
             </ul>
           </div>
 
-         
+          {/* Contact Info */}
           <div>
-            <h4 className="text-xl font-semibold mb-6 text-red-300">Contact Us</h4>
-            <div className="space-y-5">
-              <div className="flex items-center space-x-4">
-                <Phone size={20} className="text-red-300" />
+            <h4 className="text-lg font-semibold mb-6 text-red-300">Get in Touch</h4>
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3">
+                <MapPin className="w-5 h-5 text-red-400 mt-1 flex-shrink-0" />
                 <div>
-                  <p className="font-medium">Emergency Hotline</p>
-                  <p className="text-lg">+880 123 456 789</p>
+                  <p className="text-gray-300">123 Blood Drive Street</p>
+                  <p className="text-gray-300">Dhaka, Bangladesh</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-4">
-                <Mail size={20} className="text-red-300" />
-                <div>
-                  <p className="font-medium">Email</p>
-                  <p>support@hemio.org</p>
-                </div>
+              <div className="flex items-center space-x-3">
+                <Phone className="w-5 h-5 text-red-400 flex-shrink-0" />
+                <p className="text-gray-300">+880 1234-567890</p>
               </div>
-              <div className="flex items-center space-x-4">
-                <MapPin size={20} className="text-red-300" />
-                <div>
-                  <p className="font-medium">Location</p>
-                  <p>Dhaka, Bangladesh</p>
-                </div>
+              <div className="flex items-center space-x-3">
+                <Mail className="w-5 h-5 text-red-400 flex-shrink-0" />
+                <p className="text-gray-300">help@hemio.com</p>
               </div>
+            </div>
+
+            {/* Emergency Contact */}
+            <div className="mt-6 p-4 bg-red-600/20 rounded-lg border border-red-500/30">
+              <div className="flex items-center space-x-2 mb-2">
+                <Heart className="w-4 h-4 text-red-400" />
+                <p className="text-sm font-semibold text-red-300">Emergency</p>
+              </div>
+              <p className="text-sm text-gray-300">24/7 Blood Emergency</p>
+              <p className="text-lg font-bold text-white">+880 911-BLOOD</p>
             </div>
           </div>
         </div>
+      </div>
 
-        
-        <div className="border-t border-red-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-          <p className="text-gray-400 mb-4 md:mb-0">
-            © 2025 Hemio. All rights reserved. Saving lives together.
-          </p>
-          <div className="flex space-x-6 text-sm">
-            <Link to="/privacy" className="text-gray-400 hover:text-white transition">
-              Privacy Policy
-            </Link>
-            <Link to="/terms" className="text-gray-400 hover:text-white transition">
-              Terms of Service
-            </Link>
-            <Link to="/contact" className="text-gray-400 hover:text-white transition">
-              Contact
-            </Link>
+      {/* Bottom Bar */}
+      <div className="border-t border-white/10">
+        <div className="container-base px-6 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="flex items-center space-x-4 text-sm text-gray-300">
+              <p>&copy; 2024 Hemio. All rights reserved.</p>
+              <span className="hidden md:inline">|</span>
+              <p className="flex items-center space-x-1">
+                <span>Made with</span>
+                <Heart className="w-4 h-4 text-red-400 fill-current" />
+                <span>for humanity</span>
+              </p>
+            </div>
+            
+            <div className="flex items-center space-x-6 text-sm">
+              <div className="flex items-center space-x-2 text-gray-300">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span>System Status: Online</span>
+              </div>
+              <Link to="/donate" className="text-red-300 hover:text-white transition-colors font-medium">
+                🩸 Donate Now
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -8,15 +8,26 @@ const axiosSecure = axios.create({
 
 const useAxiosSecure = () =>{
     const {user} = useContext(AuthContext)
+    
     useEffect(() => {
-      const reqInterceptor = axiosSecure.interceptors.request.use(config =>{
-        config.headers.Authorization = `Bearer ${user?.accessToken}`
+      const reqInterceptor = axiosSecure.interceptors.request.use(async (config) =>{
+        if (user) {
+          try {
+            // Get the Firebase ID token
+            const token = await user.getIdToken()
+            config.headers.Authorization = `Bearer ${token}`
+          } catch (error) {
+            console.error('Error getting Firebase token:', error)
+          }
+        }
         return config
       })
+      
       const resInterceptor = axiosSecure.interceptors.response.use((response) =>{
         return response
       },(error) =>{
-        console.log(error)
+        console.log('Axios error:', error)
+        console.log('Error response:', error.response?.data)
         return Promise.reject(error)
       })
 
