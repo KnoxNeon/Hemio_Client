@@ -105,7 +105,6 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-red-400 mt-1 flex-shrink-0" />
                 <div>
-                  <p className="text-gray-300">123 Blood Drive Street</p>
                   <p className="text-gray-300">Dhaka, Bangladesh</p>
                 </div>
               </div>
@@ -120,13 +119,13 @@ const Footer = () => {
             </div>
 
             {/* Emergency Contact */}
-            <div className="mt-6 p-4 bg-red-600/20 rounded-lg border border-red-500/30">
+            <div className="mt-6 p-4 bg-gray-900 rounded-lg">
               <div className="flex items-center space-x-2 mb-2">
-                <Heart className="w-4 h-4 text-red-400" />
-                <p className="text-sm font-semibold text-red-300">Emergency</p>
+                <Heart className="w-4 h-4 text-red-500 fill-red-500" />
+                <p className="text-sm font-semibold text-gray-200">Emergency</p>
               </div>
               <p className="text-sm text-gray-300">24/7 Blood Emergency</p>
-              <p className="text-lg font-bold text-white">+880 911-BLOOD</p>
+              <h1 className="text-3xl font-bold text-red-500">+880 911-BLOOD</h1>
             </div>
           </div>
         </div>
@@ -137,13 +136,7 @@ const Footer = () => {
         <div className="container-base px-6 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-4 text-sm text-gray-300">
-              <p>&copy; 2024 Hemio. All rights reserved.</p>
-              <span className="hidden md:inline">|</span>
-              <p className="flex items-center space-x-1">
-                <span>Made with</span>
-                <Heart className="w-4 h-4 text-red-400 fill-current" />
-                <span>for humanity</span>
-              </p>
+              <p>&copy; 2026 Hemio. All rights reserved.</p>
             </div>
             
             <div className="flex items-center space-x-6 text-sm">

@@ -118,13 +118,13 @@ const RecentRequests = () => {
   }
 
   return (
-    <section className="section-padding-lg bg-section-accent">
+    <section className="section-padding-lg bg-red-50">
       <div className="container-base px-6">
         <div className="text-center mb-16">
           <h2 className="text-heading-2 mb-4">
-            Recent Blood Requests
+            Recent <span className='text-red-500'>Blood Requests</span>
           </h2>
-          <p className="text-body-lg max-w-3xl mx-auto">
+          <p className="text-body-lg max-w-3xl mx-auto text-gray-500">
             Help save lives by responding to these recent blood donation requests. 
             Every donation makes a difference in someone's life.
           </p>
@@ -136,7 +136,7 @@ const RecentRequests = () => {
             return (
               <div 
                 key={request._id}
-                className="card-elevated p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-red-500"
+                className="card-elevated p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
               >
                 {/* Urgency Badge */}
                 <div className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-4 border ${urgency.class}`}>
@@ -144,11 +144,11 @@ const RecentRequests = () => {
                 </div>
 
                 {/* Blood Group Display */}
-                <div className="flex justify-between items-start mb-4">
+                <div className="flex justify-between items-center mb-4">
                   <div className="blood-group-display w-16 h-16 text-2xl">
                     {request.blood_group}
                   </div>
-                  <Droplet className="w-6 h-6 text-red-500" />
+        
                 </div>
 
                 {/* Patient Info */}
@@ -190,9 +190,9 @@ const RecentRequests = () => {
         {/* Call to Action */}
         <div className="text-center card-elevated p-12">
           <h3 className="text-3xl font-bold text-primary mb-4">
-            More People Need Your Help
+            More People <span className='text-red-500'>Need Your Help</span> 
           </h3>
-          <p className="text-lg text-secondary mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-500 mb-8 max-w-2xl mx-auto">
             These are just a few of the many people who need blood donations. 
             Browse all requests to find someone you can help today.
           </p>

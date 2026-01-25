@@ -49,11 +49,11 @@ const Featured = () => {
       <div className="container-base px-6">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl font-bold text-primary mb-4">
             5 Amazing Benefits of 
             <span className="text-red-600"> Blood Donation</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-secondary max-w-2xl mx-auto">
             Not only do you save lives — you also improve your own health and well-being!
           </p>
         </div>
@@ -85,37 +85,17 @@ const Featured = () => {
                 
                 {/* Content Side */}
                 <div className={`flex-1 ${isEven ? 'text-left' : 'text-right md:text-right'} text-center md:text-left`}>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  <h3 className="text-xl font-semibold text-primary mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-secondary leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>
               </div>
             )
           })}
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center">
-          <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 max-w-3xl mx-auto text-white">
-            <h3 className="text-2xl font-bold mb-4">
-              Ready to Make a Difference?
-            </h3>
-            <p className="text-red-100 mb-6">
-              Join thousands of heroes who are already saving lives through blood donation.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-6 py-3 bg-white text-red-600 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-200">
-                🩸 Become a Donor Today
-              </button>
-              <button className="px-6 py-3 border border-red-300 text-white rounded-lg font-medium hover:bg-red-600 transition-colors duration-200">
-                📍 Find Donation Centers
-              </button>
-            </div>
-          </div>
-        </div>
+        </div> 
       </div>
     </section>
   );

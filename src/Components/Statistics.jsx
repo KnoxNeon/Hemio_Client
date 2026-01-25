@@ -82,7 +82,7 @@ const Statistics = () => {
       <div className="container-base px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Making a Difference Together
+            Making a <span className='text-red-500'>Difference Together</span> 
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Every donation counts. See the impact we've made together in saving lives across the country.

@@ -78,10 +78,10 @@ const Newsletter = () => {
             {/* Left Content */}
             <div className="text-white">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-white bg-opacity-20 rounded-full mb-6">
-                <Mail className="w-8 h-8 text-white" />
+                <Mail className="w-8 h-8 text-red-500" />
               </div>
               
-              <h2 className="text-4xl font-bold mb-6">
+              <h2 className="text-4xl text-gray-900 font-bold mb-6">
                 Stay Connected, Save More Lives
               </h2>
               
@@ -97,10 +97,10 @@ const Newsletter = () => {
                   return (
                     <div key={index} className="flex items-start space-x-4">
                       <div className="flex-shrink-0 w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
-                        <IconComponent className="w-5 h-5 text-white" />
+                        <IconComponent className="w-5 h-5 text-red-500 fill-red-500" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-white mb-1">
+                        <h3 className="font-semibold text-gray-900 mb-1">
                           {benefit.title}
                         </h3>
                         <p className="text-red-100 text-sm">

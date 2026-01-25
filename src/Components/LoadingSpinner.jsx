@@ -1,6 +1,6 @@
 const LoadingSpinner = ({ 
   message = "Loading...", 
-  subMessage = "Please wait while we fetch the data.",
+  subMessage = "Please wait..",
   fullScreen = true,
   size = "large" 
 }) => {

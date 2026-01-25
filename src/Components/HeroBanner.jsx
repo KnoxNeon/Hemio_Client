@@ -100,28 +100,6 @@ function HeroBanner() {
               </Link>
             </div>
 
-            {/* Dynamic Stats Section */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/20">
-              <div className="text-center group cursor-pointer">
-                <div className="text-3xl md:text-4xl font-bold text-red-400 group-hover:text-red-300 transition-colors">
-                  {currentSlideData.stats.lives}
-                </div>
-                <div className="text-sm text-gray-300">Lives Saved</div>
-              </div>
-              <div className="text-center group cursor-pointer">
-                <div className="text-3xl md:text-4xl font-bold text-red-400 group-hover:text-red-300 transition-colors">
-                  {currentSlideData.stats.donors}
-                </div>
-                <div className="text-sm text-gray-300">Active Donors</div>
-              </div>
-              <div className="text-center group cursor-pointer">
-                <div className="text-3xl md:text-4xl font-bold text-red-400 group-hover:text-red-300 transition-colors">
-                  {currentSlideData.stats.support}
-                </div>
-                <div className="text-sm text-gray-300">Support</div>
-              </div>
-            </div>
-
             {/* Slide Indicators */}
             <div className="flex justify-center lg:justify-start space-x-2 pt-4">
               {slides.map((_, index) => (

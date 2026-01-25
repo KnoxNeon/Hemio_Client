@@ -540,15 +540,15 @@ const AllRequests = () => {
                                 )}
 
                                 {/* Actions */}
-                                <div className="space-y-2 pt-4 border-t">
+                                <div className="flex pt-4 gap-2 border-t">
                                     {/* Status Change Buttons */}
-                                    <div className="flex gap-2">
+                                    <div className="flex">
                                         {(request.status === 'pending' || request.donation_status === 'pending') && (
                                             <button
                                                 onClick={() => handleStatusChange(request._id, 'inprogress')}
-                                                className="flex-1 px-4 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg hover:from-green-700 hover:to-green-800 text-sm font-bold transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
+                                                className="flex-1 px-4 py-3 bg-green-500 text-gray-50 rounded-lg hover:from-green-700 hover:to-green-800 text-sm font-bold transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
                                             >
-                                                ✅ APPROVE REQUEST
+                                                APPROVE REQUEST
                                             </button>
                                         )}
                                         
@@ -569,9 +569,9 @@ const AllRequests = () => {
                                     {role === 'admin' && (
                                         <button
                                             onClick={() => handleDelete(request._id)}
-                                            className="w-full px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 text-sm font-medium transition-colors"
+                                            className="flex-1 px-4 py-3 bg-red-500 text-gray-50 rounded-lg hover:from-green-700 hover:to-green-800 text-sm font-bold transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
                                         >
-                                            🗑️ Delete Request
+                                             Delete Request
                                         </button>
                                     )}
                                 </div>

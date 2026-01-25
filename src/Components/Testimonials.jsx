@@ -81,11 +81,11 @@ const Testimonials = () => {
   const currentData = testimonials[currentTestimonial]
 
   return (
-    <section className="section-padding-lg bg-section-accent">
+    <section className="section-padding-lg bg-white">
       <div className="container-base px-6">
         <div className="text-center mb-16">
           <h2 className="text-heading-2 mb-4">
-            Stories from Our Community
+            Stories from <span className='text-red-500'>Our Community</span>
           </h2>
           <p className="text-body-lg max-w-3xl mx-auto">
             Real stories from donors, recipients, and healthcare professionals who have experienced 
@@ -136,26 +136,6 @@ const Testimonials = () => {
                     {currentData.location}
                   </p>
                 </div>
-                <div className="text-center">
-                  <div className="blood-group-display w-12 h-12 text-lg mb-2">
-                    {currentData.bloodType}
-                  </div>
-                  {currentData.donationCount && (
-                    <p className="text-xs text-muted">
-                      {currentData.donationCount} donations
-                    </p>
-                  )}
-                  {currentData.emergency && (
-                    <span className="inline-block px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">
-                      Emergency Case
-                    </span>
-                  )}
-                  {currentData.professional && (
-                    <span className="inline-block px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
-                      Healthcare Professional
-                    </span>
-                  )}
-                </div>
               </div>
             </div>
 
@@ -193,20 +173,15 @@ const Testimonials = () => {
           <div className="text-center card-base p-8">
             <div className="text-4xl font-bold text-red-600 mb-2">4.9/5</div>
             <div className="text-secondary">Average Rating</div>
-            <div className="flex justify-center mt-2">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-              ))}
-            </div>
           </div>
           
           <div className="text-center card-base p-8">
-            <div className="text-4xl font-bold text-blue-600 mb-2">2,500+</div>
+            <div className="text-4xl font-bold text-red-600 mb-2">2,500+</div>
             <div className="text-secondary">Happy Donors</div>
           </div>
           
           <div className="text-center card-base p-8">
-            <div className="text-4xl font-bold text-green-600 mb-2">8,750</div>
+            <div className="text-4xl font-bold text-red-600 mb-2">8,750</div>
             <div className="text-secondary">Lives Impacted</div>
           </div>
         </div>

@@ -35,7 +35,7 @@ const ContactUs = () => {
   ];
 
   return (
-    <section className="section-padding-lg bg-section-alt">
+    <section className="section-padding-lg bg-red-50">
       <div className="container-base">
         
         {/* Section Header */}
@@ -69,7 +69,7 @@ const ContactUs = () => {
                     name="name"
                     required
                     className="form-input"
-                    placeholder="John Doe"
+                    placeholder="Your Full Name"
                   />
                 </div>
                 <div>
@@ -96,7 +96,7 @@ const ContactUs = () => {
                   name="email"
                   required
                   className="form-input"
-                  placeholder="john@example.com"
+                  placeholder="user@email.com"
                 />
               </div>
 
@@ -177,7 +177,7 @@ const ContactUs = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a href="tel:+880911BLOOD" className="btn-primary text-center">
-                  📞 Call Emergency: +880 911-BLOOD
+                   Call on Emergency: +880 911-BLOOD
                 </a>
                 <a href="sms:+880911BLOOD" className="btn-outline text-center">
                   💬 Send SMS

@@ -41,7 +41,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <img src='../logo.png' className='h-10 w-10 group-hover:scale-110 transition-transform' alt="Hemio Logo" />
-            <span className="text-2xl font-bold text-red-600">Hemio</span>
+            <span className="text-2xl font-bold text-black">Hem<span className='text-red-500'>io</span> </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -123,6 +123,15 @@ const Navbar = () => {
             </button>
             
             {user && (
+              <><NavLink 
+                to="/donate" 
+                className={({isActive}) => 
+                  `font-medium transition-colors ${isActive ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`
+                }
+              >
+                Support Us
+              </NavLink>
+
               <NavLink 
                 to="/dashboard/main" 
                 className={({isActive}) => 
@@ -131,6 +140,7 @@ const Navbar = () => {
               >
                 Dashboard
               </NavLink>
+              </>
             )}
           </div>
 
@@ -149,21 +159,21 @@ const Navbar = () => {
               <div className="relative">
                 <button
                   onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
-                  className="flex items-center space-x-2 px-3 py-2 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+                  className="flex items-center space-x-2 px-3 py-2 bg-gray-50 rounded-lg hover:bg-gray-100  transition-colors"
                 >
                   <img 
                     src={user.photoURL || '/default-avatar.png'} 
                     alt="Profile" 
                     className="w-8 h-8 rounded-full object-cover"
                   />
-                  <span className="text-sm font-medium text-secondary max-w-24 truncate">
+                  <span className="text-sm font-medium text-gray-600 max-w-24 truncate">
                     {user.displayName || 'User'}
                   </span>
                   <ChevronDown className={`w-4 h-4 text-muted transition-transform ${isProfileDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
 
                 {isProfileDropdownOpen && (
-                  <div className="absolute top-full right-0 mt-2 w-48 bg-section rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50">
+                  <div className="absolute top-full right-0 mt-2 w-48 bg-section rounded-lg shadow-lg border border-gray-200  py-2 z-50">
                     <Link 
                       to="/dashboard/my-profile" 
                       className="flex items-center space-x-2 px-4 py-2 text-secondary hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 transition-colors"

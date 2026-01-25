@@ -149,13 +149,13 @@ const BloodTypes = () => {
   }
 
   return (
-    <section className="section-padding-lg bg-section">
+    <section className="section-padding-lg bg-white">
       <div className="container-base px-6">
         <div className="text-center mb-16">
           <h2 className="text-heading-2 mb-4">
             Blood Type <span className='text-red-600'>Compatibility</span> 
           </h2>
-          <p className="text-body-lg max-w-3xl mx-auto">
+          <p className="text-body-lg text-gray-500 max-w-3xl mx-auto">
             Understanding blood type compatibility is crucial for safe blood transfusions. 
             Learn about different blood types and their donation compatibility.
           </p>
@@ -165,14 +165,14 @@ const BloodTypes = () => {
           {/* Navigation Buttons */}
           <button
             onClick={prevPage}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-12 z-10 w-10 h-10 bg-section rounded-full shadow-lg flex items-center justify-center hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors group"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-12 z-10 w-10 h-10  rounded-full shadow-lg flex items-center justify-center hover:bg-red-50 transition-colors group"
           >
             <ChevronLeft className="w-5 h-5 text-muted group-hover:text-red-600" />
           </button>
           
           <button
             onClick={nextPage}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-12 z-10 w-10 h-10 bg-section rounded-full shadow-lg flex items-center justify-center hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors group"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-12 z-10 w-10 h-10  rounded-full shadow-lg flex items-center justify-center hover:bg-red-50 transition-colors group"
           >
             <ChevronRight className="w-5 h-5 text-muted group-hover:text-red-600" />
           </button>
@@ -181,7 +181,7 @@ const BloodTypes = () => {
           {getCurrentPageItems().map((bloodType, index) => (
             <div 
               key={`${currentPage}-${index}`}
-              className={`bg-red-50 rounded-xl p-6 border-2 ${bloodType.borderColor} hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 animate-fade-in`}
+              className={`bg-gray-100 rounded-xl p-6  hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 animate-fade-in`}
               style={{
                 animationDelay: `${index * 100}ms`,
                 animationFillMode: 'both'
@@ -189,12 +189,12 @@ const BloodTypes = () => {
             >
               <div className="text-center mb-4">
                 <div className={`inline-flex items-center justify-center w-16 h-16 ${bloodType.bgColor} rounded-full mb-3 transform transition-transform duration-300 hover:scale-110`}>
-                  <Droplet className={`w-8 h-8 ${bloodType.color}`} />
+                  <Droplet className="text-red-500 fill-red-500" />
                 </div>
                 <h3 className="text-2xl font-bold text-primary mb-1">
                   {bloodType.type}
                 </h3>
-                <p className="text-sm text-secondary mb-2">
+                <p className="text-sm text-gray-500 mb-2">
                   {bloodType.name}
                 </p>
                 <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${getRarityBadge(bloodType.rarity)}`}>
@@ -202,7 +202,7 @@ const BloodTypes = () => {
                 </span>
               </div>
 
-              <p className="text-sm text-secondary mb-4 text-center">
+              <p className="text-sm text-red-400 mb-4 text-center">
                 {bloodType.description}
               </p>
 
@@ -270,26 +270,26 @@ const BloodTypes = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="text-center transform transition-all duration-300 hover:scale-105">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
-                <Droplet className="w-8 h-8 text-red-600" />
+                <Droplet className="w-8 h-8 text-red-600 fill-red-600" />
               </div>
               <h3 className="text-2xl font-bold text-primary mb-3">
                 Universal Donor
               </h3>
               <p className="text-secondary">
-                <strong className="text-red-600">O-</strong> blood type can donate to anyone, making O- donors incredibly valuable 
-                in emergency situations when there's no time for blood typing.
+                <strong className="text-red-600 text-4xl leading-none">O-</strong> <span>blood type can donate to anyone, making O- donors incredibly valuable 
+                in emergency situations when there's no time for blood typing.</span> 
               </p>
             </div>
             
             <div className="text-center transform transition-all duration-300 hover:scale-105">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
-                <Users className="w-8 h-8 text-red-600" />
+                <Users className="w-8 h-8 text-red-600 fill-red-600" />
               </div>
               <h3 className="text-2xl font-bold text-primary mb-3">
                 Universal Recipient
               </h3>
               <p className="text-secondary">
-                <strong className="text-red-600">AB+</strong> blood type can receive blood from any blood type, 
+                <strong className="text-red-600 text-4xl leading-none">AB+</strong> blood type can receive blood from any blood type, 
                 but can only donate to other AB+ recipients.
               </p>
             </div>

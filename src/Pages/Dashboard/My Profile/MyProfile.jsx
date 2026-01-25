@@ -3,6 +3,7 @@ import { AuthContext } from '../../../Provider/AuthProvider';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import LoadingSpinner from '../../../Components/LoadingSpinner';
 
 const MyProfile = () => {
   const { user: firebaseUser } = useContext(AuthContext);
@@ -121,7 +122,12 @@ const MyProfile = () => {
   };
 
   if (loading) {
-    return <div className="text-center py-20 text-2xl">Loading profile...</div>;
+    return (
+       <LoadingSpinner 
+        message="Loading your profile..."
+        fullScreen={false}
+      />
+    )
   }
 
   return (

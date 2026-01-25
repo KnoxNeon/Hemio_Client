@@ -1,6 +1,41 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+/* Text Color System */
+.text-primary {
+  @apply text-gray-800 dark:text-gray-800;
+}
+
+.text-secondary {
+  @apply text-black dark:text-black;
+}
+
+.text-muted {
+  @apply text-gray-500 dark:text-gray-500;
+}
+
+.text-accent {
+  @apply text-red-600 dark:text-red-400;
+}
+
+/* Background Color System */
+.bg-section {
+  @apply bg-white dark:bg-gray-800;
+}
+
+.bg-section-alt {
+  @apply bg-gray-50 dark:bg-gray-900;
+}
+
+.bg-section-accent {
+  @apply bg-red-50 dark:bg-red-900/20;
+}
+
+/* Border Color System */
+.border-section {
+  @apply border-gray-200 dark:border-gray-700;
+}
+
 /* Basic Design System */
 .btn-primary {
   @apply px-6 py-3 bg-red-600 text-white font-semibold rounded-xl hover:bg-red-700 transition-all duration-300;

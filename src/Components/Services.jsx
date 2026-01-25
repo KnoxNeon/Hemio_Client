@@ -50,10 +50,10 @@ const Services = () => {
     <section className="py-16 bg-white">
       <div className="container-base px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Our <span className='text-red-600'>Services</span>
+          <h2 className="text-4xl font-bold mb-4">
+            Our <span className='text-red-500'>Services</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg max-w-2xl mx-auto">
             Comprehensive blood donation services designed to connect donors with those in need
           </p>
         </div>
@@ -71,11 +71,11 @@ const Services = () => {
                   <IconComponent className={`w-6 h-6 ${service.color}`} />
                 </div>
                 
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl text-red-500 font-semibold  mb-3">
                   {service.title}
                 </h3>
                 
-                <p className="text-gray-600 leading-relaxed">
+                <p className=" leading-relaxed">
                   {service.description}
                 </p>
               </div>

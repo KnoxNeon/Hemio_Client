@@ -52,14 +52,14 @@ const FAQ = () => {
   }
 
   return (
-    <section className="section-padding-lg bg-section">
+    <section className="section-padding-lg bg-red-50">
       <div className="container-base px-6">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-6">
-            <HelpCircle className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+          <div className="inline-flex items-center justify-center w-16 h-16 border-3 bg-white rounded-full mb-6">
+            <HelpCircle className="w-14 h-14 text-white fill-red-500" />
           </div>
           <h2 className="text-heading-2 mb-4">
-            Frequently Asked Questions
+            Frequently Asked <span className='text-red-500'>Questions</span>
           </h2>
           <p className="text-body-lg max-w-3xl mx-auto">
             Get answers to common questions about blood donation, our platform, and how you can help save lives.
@@ -71,13 +71,13 @@ const FAQ = () => {
             {faqs.map((faq, index) => (
               <div 
                 key={index}
-                className="bg-section-alt rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-all duration-300"
+                className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300"
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                  className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-100 transition-colors"
                 >
-                  <h3 className="text-lg font-semibold text-primary pr-4">
+                  <h3 className="text-lg font-semibold text-red-500 pr-4">
                     {faq.question}
                   </h3>
                   <div className="flex-shrink-0">
@@ -107,20 +107,19 @@ const FAQ = () => {
         <div className="text-center mt-16">
           <div className="bg-section-accent rounded-2xl p-12">
             <h3 className="text-3xl font-bold text-primary mb-4">
-              Still Have Questions?
+              Still Have <span className='text-red-500'>Questions?</span>
             </h3>
             <p className="text-body mb-8 max-w-2xl mx-auto">
               Our support team is here to help you with any questions about blood donation, 
               our platform, or how to get started as a donor or recipient.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn-primary px-8 py-3 text-lg">
-                📞 Contact Support
+              <button onClick={() => {
+                      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });}} 
+                      className="btn-primary px-8 py-3 text-lg">
+                
+                 Contact Us
               </button>
-              <button className="btn-outline px-8 py-3 text-lg">
-                💬 Live Chat
-              </button>
-            </div>
+            
           </div>
         </div>
       </div>
